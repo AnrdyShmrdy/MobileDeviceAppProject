@@ -10,26 +10,30 @@
         android:id="@+id/button7"
         android:layout_width="200dp"
         android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:text="Plan 1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="183dp" />
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <Button
         android:id="@+id/button8"
         android:layout_width="200dp"
         android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:text="Plan 2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="328dp" />
+        app:layout_constraintTop_toBottomOf="@+id/button7" />
 
-    <RadioGroup
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+    <Spinner
+        android:id="@+id/app_screen_spinner"
+        android:layout_width="57dp"
+        android:layout_height="61dp"
         android:background="#902196F3"
+        android:prompt="@string/spinner_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,6 +53,7 @@
         android:layout_width="190dp"
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
+        android:progress="@android:integer/status_bar_notification_info_maxnum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +65,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="TextView"
+        android:text="15000/20000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
