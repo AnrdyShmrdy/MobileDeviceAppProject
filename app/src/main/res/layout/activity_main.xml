@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button7" />
 
     <Spinner
-        android:id="@+id/app_screen_spinner"
+        android:id="@+id/main_spinner"
         android:layout_width="57dp"
         android:layout_height="61dp"
         android:background="#902196F3"

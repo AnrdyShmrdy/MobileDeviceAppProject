@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context=".SelectPlanActivity">
     <Spinner
-        android:id="@+id/app_screen_spinner3"
+        android:id="@+id/select_plan_spinner"
         android:layout_width="57dp"
         android:layout_height="61dp"
         android:background="#902196F3"

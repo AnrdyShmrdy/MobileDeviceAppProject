@@ -1,7 +1,5 @@
 package edu.flpoly.mobiledevapps.fall21.UI_Demo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,14 +7,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class LeaderboardActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.main_spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.leaderboard_spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.app_screens, android.R.layout.simple_spinner_item);
@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
         /*
-        * If item == Leaderboard
-        *       Go To Leaderboard
-        * If item == Plan Select
-        *       Go To Plan Select*/
+         * If item == Main
+         *       Go To Main
+         * If item == Plan Select
+         *       Go To Plan Select*/
     }
 
     @Override
