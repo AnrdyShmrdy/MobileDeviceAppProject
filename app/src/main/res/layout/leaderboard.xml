@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:id="@+id/linearLayout"
     tools:context=".LeaderboardActivity">
-    <Spinner
-        android:id="@+id/leaderboard_spinner"
+
+    <Button
+        android:id="@+id/menu_button_leaderboard"
         android:layout_width="57dp"
         android:layout_height="61dp"
         android:background="#902196F3"
