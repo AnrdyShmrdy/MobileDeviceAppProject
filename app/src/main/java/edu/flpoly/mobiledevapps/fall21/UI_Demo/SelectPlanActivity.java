@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +17,7 @@ public class SelectPlanActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_plan);
-        menu_button_select_plan = (Button) findViewById(R.id.menu_button_selectPlan);
+        menu_button_select_plan = (Button) findViewById(R.id.menu_button_select_plan);
         // Setting onClick behavior to the button
         menu_button_select_plan.setOnClickListener(new View.OnClickListener() {
             @Override
