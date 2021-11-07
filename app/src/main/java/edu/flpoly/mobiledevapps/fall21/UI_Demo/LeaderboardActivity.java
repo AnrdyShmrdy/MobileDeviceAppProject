@@ -33,7 +33,7 @@ public class LeaderboardActivity extends AppCompatActivity{
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        AppUtils.determineActivityToGoTo(getApplicationContext(), menuItem);
+                        determineActivityToGoTo(menuItem);
                         return true;
                     }
                 });
@@ -42,4 +42,35 @@ public class LeaderboardActivity extends AppCompatActivity{
             }
         });
     }
+    public void goToActivity(Class<?> cls){
+        Intent intent = new Intent(getApplicationContext(), cls);
+        startActivity(intent);
+    }
+    public void determineActivityToGoTo(MenuItem menuItem) {
+        //Get the name of the current activity:
+        String currentActivity = getClass().getSimpleName();
+        //Show the name of the current activity for testing:
+        Toast.makeText(getApplicationContext(), currentActivity, Toast.LENGTH_SHORT).show();
+        //if menuItem equals the first entry in the popupMenu(main screen)
+        if (menuItem.getTitle().equals("Main") && !currentActivity.equals("MainActivity")) {
+            Toast.makeText(getApplicationContext(), "You clicked to go to the main screen", Toast.LENGTH_SHORT).show();
+            goToActivity(MainActivity.class);
+        }
+        //if menuItem equals the second entry in the popupMenu (plan screen):
+        else if (menuItem.getTitle().equals("Select Plan") && !currentActivity.equals("SelectPlanActivity")) {
+            Toast.makeText(getApplicationContext(), "You clicked to go to the select plan screen", Toast.LENGTH_SHORT).show();
+            goToActivity(SelectPlanActivity.class);
+        }
+        //if menuItem equals the third entry in the popupMenu (leaderboard screen)
+        else if (menuItem.getTitle().equals("Leaderboard") && !currentActivity.equals("LeaderboardActivity")) {
+            Toast.makeText(getApplicationContext(), "You clicked to go to the leaderboard screen", Toast.LENGTH_SHORT).show();
+            goToActivity(LeaderboardActivity.class);
+        }
+        //if menuItem is equal to the current activity:
+        else {
+            // Toast message on menu item clicked
+            Toast.makeText(getApplicationContext(), "You Clicked " + menuItem.getTitle() + " but you're already in " + currentActivity, Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
