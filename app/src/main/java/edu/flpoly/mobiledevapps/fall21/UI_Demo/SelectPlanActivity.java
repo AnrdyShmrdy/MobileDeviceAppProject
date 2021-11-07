@@ -1,23 +1,32 @@
 package edu.flpoly.mobiledevapps.fall21.UI_Demo;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 public class SelectPlanActivity extends AppCompatActivity{
-    Button menu_button_select_plan;
+    Button menu_button_select_plan, selectPlan1Button, selectPlan2Button;
+    private TextView fileContent;
     PopupMenu popupMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_plan);
         menu_button_select_plan = (Button) findViewById(R.id.menu_button_select_plan);
+        selectPlan1Button = (Button) findViewById(R.id.selectPlan1Button);
+        selectPlan2Button = (Button) findViewById(R.id.selectPlan2Button);
+        fileContent = (TextView) findViewById(R.id.selectPlanOutput);
         // Setting onClick behavior to the button
         menu_button_select_plan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +45,42 @@ public class SelectPlanActivity extends AppCompatActivity{
                 });
                 // Showing the popup menu
                 popupMenu.show();
+            }
+        });
+        //setting onClick behavior for plan 1 button:
+        selectPlan1Button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                String string = " ";
+                AssetManager am = SelectPlanActivity.this.getAssets();
+                try {
+                    InputStream inputStream = getAssets().open("plan1.txt");
+                    int size = inputStream.available();
+                    byte[] buffer = new byte[size];
+                    inputStream.read(buffer);
+                    string = new String(buffer);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                fileContent.setText(string);
+            }
+        });
+        //setting onClick behavior for plan 2 button:
+        selectPlan2Button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                String string = " ";
+                AssetManager am = SelectPlanActivity.this.getAssets();
+                try {
+                    InputStream inputStream = getAssets().open("plan2.txt");
+                    int size = inputStream.available();
+                    byte[] buffer = new byte[size];
+                    inputStream.read(buffer);
+                    string = new String(buffer);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                fileContent.setText(string);
             }
         });
     }
