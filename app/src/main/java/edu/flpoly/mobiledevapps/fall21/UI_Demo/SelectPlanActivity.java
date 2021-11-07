@@ -54,7 +54,7 @@ public class SelectPlanActivity extends AppCompatActivity{
         //if menuItem equals the first entry in the popupMenu(main screen)
         if (menuItem.getTitle().equals("Main") && !currentActivity.equals("MainActivity")) {
             Toast.makeText(getApplicationContext(), "You clicked to go to the main screen", Toast.LENGTH_SHORT).show();
-            goToActivity(SelectPlanActivity.class);
+            goToActivity(MainActivity.class);
         }
         //if menuItem equals the second entry in the popupMenu (plan screen):
         else if (menuItem.getTitle().equals("Select Plan") && !currentActivity.equals("SelectPlanActivity")) {
