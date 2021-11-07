@@ -2,30 +2,31 @@ package edu.flpoly.mobiledevapps.fall21.UI_Demo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-public class MainActivity extends AppCompatActivity{
-    Button menu_button_main;
+public class SelectPlanActivity extends AppCompatActivity{
+    Button menu_button_select_plan;
     PopupMenu popupMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        menu_button_main = (Button) findViewById(R.id.menu_button_main);
+        setContentView(R.layout.select_plan);
+        menu_button_select_plan = (Button) findViewById(R.id.menu_button_selectPlan);
         // Setting onClick behavior to the button
-        menu_button_main.setOnClickListener(new View.OnClickListener() {
+        menu_button_select_plan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Initializing the popup menu and giving the reference as current context
-                popupMenu = new PopupMenu(MainActivity.this, menu_button_main);
+                popupMenu = new PopupMenu(SelectPlanActivity.this, menu_button_select_plan);
 
                 // Inflating popup menu from popup_menu.xml file
                 popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
@@ -57,18 +58,18 @@ public class MainActivity extends AppCompatActivity{
         }
         //if menuItem equals the second entry in the popupMenu (plan screen):
         else if (menuItem.getTitle().equals("Select Plan") && !currentActivity.equals("SelectPlanActivity")) {
-                Toast.makeText(getApplicationContext(), "You clicked to go to the select plan screen", Toast.LENGTH_SHORT).show();
-                goToActivity(SelectPlanActivity.class);
-            }
+            Toast.makeText(getApplicationContext(), "You clicked to go to the select plan screen", Toast.LENGTH_SHORT).show();
+            goToActivity(SelectPlanActivity.class);
+        }
         //if menuItem equals the third entry in the popupMenu (leaderboard screen)
         else if (menuItem.getTitle().equals("Leaderboard") && !currentActivity.equals("LeaderboardActivity")) {
-                Toast.makeText(getApplicationContext(), "You clicked to go to the leaderboard screen", Toast.LENGTH_SHORT).show();
-                goToActivity(LeaderboardActivity.class);
-            }
+            Toast.makeText(getApplicationContext(), "You clicked to go to the leaderboard screen", Toast.LENGTH_SHORT).show();
+            goToActivity(LeaderboardActivity.class);
+        }
         //if menuItem is equal to the current activity:
         else {
-                // Toast message on menu item clicked
-                Toast.makeText(getApplicationContext(), "You Clicked " + menuItem.getTitle() + " but you're already in " + currentActivity, Toast.LENGTH_SHORT).show();
-            }
+            // Toast message on menu item clicked
+            Toast.makeText(getApplicationContext(), "You Clicked " + menuItem.getTitle() + " but you're already in " + currentActivity, Toast.LENGTH_SHORT).show();
         }
     }
+}
