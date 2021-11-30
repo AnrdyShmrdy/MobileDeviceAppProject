@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mobiledeviceappproject-dev-202105-authRole",
+      "UnauthRoleArn": "arn:aws:iam::197462680731:role/amplify-mobiledeviceappproject-dev-202105-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::197462680731:role/amplify-mobiledeviceappproject-dev-202105-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-mobiledeviceappproject-dev-202105-deployment",
+      "UnauthRoleName": "amplify-mobiledeviceappproject-dev-202105-unauthRole",
+      "StackName": "amplify-mobiledeviceappproject-dev-202105",
+      "StackId": "arn:aws:cloudformation:us-east-1:197462680731:stack/amplify-mobiledeviceappproject-dev-202105/27c299d0-4032-11ec-99fa-125e3f55cf49",
+      "AmplifyAppId": "d3b5oa926iybu6"
+    },
+    "categories": {
+      "auth": {
+        "mobiledeviceappprojectb84c854d": {}
+      }
+    }
+  }
+}

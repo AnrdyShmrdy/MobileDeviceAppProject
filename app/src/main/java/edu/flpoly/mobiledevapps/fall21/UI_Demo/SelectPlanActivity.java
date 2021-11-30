@@ -3,6 +3,7 @@ package edu.flpoly.mobiledevapps.fall21.UI_Demo;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -10,8 +11,17 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
+import com.amplifyframework.auth.cognito.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -21,6 +31,20 @@ public class SelectPlanActivity extends AppCompatActivity{
     PopupMenu popupMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Initializing Amazon API stuff
+        try {
+            // Add these lines to add the AWSCognitoAuthPlugin and AWSS3StoragePlugin plugins
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.addPlugin(new AWSS3StoragePlugin());
+            Amplify.configure(getApplicationContext());
+
+            Log.i("MyAmplifyApp", "Initialized Amplify");
+        } catch (AmplifyException error) {
+            Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
+        }
+        //temp user login
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_plan);
         menu_button_select_plan = (Button) findViewById(R.id.menu_button_select_plan);
@@ -63,7 +87,25 @@ public class SelectPlanActivity extends AppCompatActivity{
                     e.printStackTrace();
                 }
                 fileContent.setText(string);
+
+                //uploads plan1.txt to Amazon
+                File plan1file = new File(getApplicationContext().getFilesDir(), "plan1.txt");
+                try {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(plan1file));
+                    writer.append("Example file contents");
+                    writer.close();
+                } catch (Exception exception) {
+                    Log.e("MyAmplifyApp", "Upload failed", exception);
+                }
+                Amplify.Storage.uploadFile(
+                        "plan1.txt",
+                        plan1file,
+                        result -> Log.i("SelectPlanActivity", "Successfully uploaded: " + result.getKey()),
+                        storageFailure -> Log.e("SelectPlanActivity", "Upload failed", storageFailure)
+                );
             }
+
+
         });
         //setting onClick behavior for plan 2 button:
         selectPlan2Button.setOnClickListener(new View.OnClickListener(){
@@ -81,6 +123,21 @@ public class SelectPlanActivity extends AppCompatActivity{
                     e.printStackTrace();
                 }
                 fileContent.setText(string);
+                //upload plan2.txt to s3 bucket
+                File plan2file = new File(getApplicationContext().getFilesDir(), "plan2.txt");
+                try {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(plan2file));
+                    writer.append("Example file contents");
+                    writer.close();
+                } catch (Exception exception) {
+                    Log.e("MyAmplifyApp", "Upload failed", exception);
+                }
+                Amplify.Storage.uploadFile(
+                        "plan2.txt",
+                        plan2file,
+                        result -> Log.i("SelectPlanActivity", "Successfully uploaded: " + result.getKey()),
+                        storageFailure -> Log.e("SelectPlanActivity", "Upload failed", storageFailure)
+                );
             }
         });
     }
