@@ -16,66 +16,66 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/leaderboardTitle"
         android:layout_width="140dp"
         android:layout_height="58dp"
         android:gravity="center"
-        android:text="Leaderboard"
+        android:text="@string/leaderboard_activity_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/divider4"
+        android:id="@+id/leaderboardDivider"
         android:layout_width="409dp"
         android:layout_height="1dp"
         android:layout_marginTop="20dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/leaderboardTitle" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/li_button1"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:text="List Item"
+        android:text="@string/list_item_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider4" />
+        app:layout_constraintTop_toBottomOf="@+id/leaderboardDivider" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/li_button2"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:text="List Item"
+        android:text="@string/list_item_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/li_button1" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/li_button3"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:text="List Item"
+        android:text="@string/list_item_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/li_button2" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/li_button4"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:text="List Item"
+        android:text="@string/list_item_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/li_button3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

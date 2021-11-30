@@ -3,4 +3,10 @@
     <string name="main_activity_name">Main</string>
     <string name="leaderboard_activity_name">Leaderboard</string>
     <string name="select_plan_activity_name">Select Plan</string>
+    <string name="plan_1">Plan 1</string>
+    <string name="plan_2">Plan 2</string>
+    <string name="list_item_1">List Item 1</string>
+    <string name="list_item_2">List Item 2</string>
+    <string name="list_item_3">List Item 3</string>
+    <string name="list_item_4">List Item 4</string>
 </resources>

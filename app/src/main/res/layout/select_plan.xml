@@ -7,7 +7,7 @@
     tools:context=".SelectPlanActivity">
 
     <Button
-        android:id="@+id/menu_button_selectPlan"
+        android:id="@+id/menu_button_select_plan"
         android:layout_width="57dp"
         android:layout_height="61dp"
         android:background="#902196F3"
@@ -15,33 +15,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/selectPlan1Button"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:text="Plan 1"
+        android:text="@string/plan_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/selectPlan2Button"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:text="Plan 2"
+        android:text="@string/plan_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/selectPlan1Button" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="106dp"
         android:layout_height="57dp"
         android:gravity="center"
-        android:text="Select Plan"
+        android:text="@string/select_plan_activity_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,5 +55,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/selectPlanOutput"
+        android:layout_width="251dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectPlan2Button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
