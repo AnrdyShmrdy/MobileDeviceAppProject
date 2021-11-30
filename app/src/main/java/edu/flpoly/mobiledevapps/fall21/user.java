@@ -3,18 +3,15 @@ package edu.flpoly.mobiledevapps.fall21;
 public class user {
     //some variables
     String username;
-    String phone_number;
+    String plan;
     int xp;
-    double longitude;
-    double latitude;
+
 
     //constructor
-    public user(String username, String phone_number, int xp){
+    public user(String username, String plan, int xp){
         this.username = username;
-        this.phone_number = phone_number;
+        this.plan = plan;
         this.xp = xp;
-        this.longitude = 0;
-        this.latitude = 0;
     }
     //getters and setters
     public String getUsername() {
@@ -25,13 +22,9 @@ public class user {
         this.username = username;
     }
 
-    public String getPhone_number() {
-        return phone_number;
-    }
+    public String getPlan(){return plan;}
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
-    }
+    public void setPlan(String plan){this.plan = plan;}
 
     public int getXp() {
         return xp;
@@ -41,19 +34,5 @@ public class user {
         this.xp = xp;
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
 
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
 }
