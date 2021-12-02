@@ -26,9 +26,9 @@ public class SelectPlanActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_plan);
         menu_button_select_plan = (Button) findViewById(R.id.menu_button_select_user);
-        selectPlan1Button = (Button) findViewById(R.id.selectPlan1Button);
-        selectPlan2Button = (Button) findViewById(R.id.selectPlan2Button);
-        fileContent = (TextView) findViewById(R.id.selectPlanOutput);
+        selectPlan1Button = (Button) findViewById(R.id.createUserBtn);
+        selectPlan2Button = (Button) findViewById(R.id.loadUserBtn);
+        fileContent = (TextView) findViewById(R.id.selectUserOutput);
         //Initializing Amazon API stuff
         try {
             // Add these lines to add the AWSCognitoAuthPlugin and AWSS3StoragePlugin plugins

@@ -6,6 +6,8 @@
     <string name="select_user_activity_name">Select User</string>
     <string name="plan_1">Plan 1</string>
     <string name="plan_2">Plan 2</string>
+    <string name="user_create">Create User</string>
+    <string name="user_load">Load User</string>
     <string name="list_item_1">List Item 1</string>
     <string name="list_item_2">List Item 2</string>
     <string name="list_item_3">List Item 3</string>
