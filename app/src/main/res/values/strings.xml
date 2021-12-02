@@ -9,4 +9,5 @@
     <string name="list_item_2">List Item 2</string>
     <string name="list_item_3">List Item 3</string>
     <string name="list_item_4">List Item 4</string>
+    <string name="planUnselected">Please select a plan on the plan select screen.</string>
 </resources>
