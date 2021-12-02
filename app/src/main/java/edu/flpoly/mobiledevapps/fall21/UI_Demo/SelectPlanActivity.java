@@ -33,6 +33,12 @@ public class SelectPlanActivity extends AppCompatActivity{
     PopupMenu popupMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.select_plan);
+        menu_button_select_plan = (Button) findViewById(R.id.menu_button_select_plan);
+        selectPlan1Button = (Button) findViewById(R.id.selectPlan1Button);
+        selectPlan2Button = (Button) findViewById(R.id.selectPlan2Button);
+        fileContent = (TextView) findViewById(R.id.selectPlanOutput);
         //Initializing Amazon API stuff
         try {
             // Add these lines to add the AWSCognitoAuthPlugin and AWSS3StoragePlugin plugins
@@ -44,15 +50,8 @@ public class SelectPlanActivity extends AppCompatActivity{
         } catch (AmplifyException error) {
             Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
         }
-        //temp user login
 
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.select_plan);
-        menu_button_select_plan = (Button) findViewById(R.id.menu_button_select_plan);
-        selectPlan1Button = (Button) findViewById(R.id.selectPlan1Button);
-        selectPlan2Button = (Button) findViewById(R.id.selectPlan2Button);
-        fileContent = (TextView) findViewById(R.id.selectPlanOutput);
         // Setting onClick behavior to the button
         menu_button_select_plan.setOnClickListener(new View.OnClickListener() {
             @Override
