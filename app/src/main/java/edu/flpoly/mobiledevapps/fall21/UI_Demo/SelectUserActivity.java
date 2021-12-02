@@ -1,11 +1,13 @@
 package edu.flpoly.mobiledevapps.fall21.UI_Demo;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,18 +19,35 @@ import com.amplifyframework.auth.cognito.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.TimeUnit;
+
 public class SelectUserActivity extends AppCompatActivity{
-    Button menu_button_select_user, selectPlan1Button, selectPlan2Button;
+    Button menu_button_select_user, createUserButton, loadUserButton;
     private TextView fileContent;
+    private EditText usernameInput;
+    private String usernameFileName;
     PopupMenu popupMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_user);
         menu_button_select_user = (Button) findViewById(R.id.menu_button_select_user);
-        selectPlan1Button = (Button) findViewById(R.id.createUserBtn);
-        selectPlan2Button = (Button) findViewById(R.id.loadUserBtn);
+        createUserButton = (Button) findViewById(R.id.createUserBtn);
+        loadUserButton = (Button) findViewById(R.id.loadUserBtn);
         fileContent = (TextView) findViewById(R.id.selectUserOutput);
+        usernameInput = (EditText) findViewById(R.id.usernameInput);
         //Initializing Amazon API stuff
         try {
             // Add these lines to add the AWSCognitoAuthPlugin and AWSS3StoragePlugin plugins
@@ -62,14 +81,15 @@ public class SelectUserActivity extends AppCompatActivity{
                 popupMenu.show();
             }
         });
-        //setting onClick behavior for plan 1 button:
-        /*selectPlan1Button.setOnClickListener(new View.OnClickListener(){
+        //setting onClick behavior for createUser button:
+        createUserButton.setOnClickListener(new View.OnClickListener(){
             @Override
            public void onClick(View view){
                 String string = " ";
-                AssetManager am = SelectPlanActivity.this.getAssets();
+                usernameFileName = usernameInput.getText().toString() + ".json";
+                AssetManager am = SelectUserActivity.this.getAssets();
                 try {
-                    InputStream inputStream = getAssets().open("plan1.json");
+                    InputStream inputStream = getAssets().open(usernameFileName);
                     int size = inputStream.available();
                     byte[] buffer = new byte[size];
                     inputStream.read(buffer);
@@ -79,10 +99,10 @@ public class SelectUserActivity extends AppCompatActivity{
                 }
                 fileContent.setText(string);
 
-                //uploads plan1.json to Amazon
-                File plan1file = new File(getApplicationContext().getFilesDir(), "plan1.json");
+                //uploads username.json to Amazon
+                File usernameFile = new File(getApplicationContext().getFilesDir(), usernameFileName);
                 try {
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(plan1file));
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(usernameFile));
                     writer.append("Example file contents");
                     writer.close();
                 } catch (Exception exception) {
@@ -91,15 +111,62 @@ public class SelectUserActivity extends AppCompatActivity{
             }
 
 
-        });*/
-        //setting onClick behavior for plan 2 button:
-        /*selectPlan2Button.setOnClickListener(new View.OnClickListener(){
+        });
+        //setting onClick behavior for loadUser button:
+        loadUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                /*String string = " ";
-                AssetManager am = SelectPlanActivity.this.getAssets();
+            public void onClick(View view) {
+                usernameFileName = usernameInput.getText().toString() + ".json";
+                //Checks if username.json exists, if it does, deletes to update
+                File user = new File(getApplicationContext().getFilesDir(), usernameFileName);
+                if (user.exists()) {
+                    if (user.delete()) {
+                        System.out.println("Deleted the file: " + usernameFileName);
+                    } else {
+                        Toast.makeText(getApplicationContext(), usernameFileName + " does not exist", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                //Downloads user data
+                Amplify.Storage.downloadFile(
+                        usernameFileName,
+                        new File(getApplicationContext().getFilesDir() + usernameFileName),
+                        result -> Log.i("MyAmplifyApp", "Successfully downloaded: " + result.getFile().getName()),
+                        error -> Log.e("MyAmplifyApp", "Download Failure", error)
+                );
+
+                //Wait for file to download
                 try {
-                    InputStream inputStream = getAssets().open("plan2.json");
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    FileReader fileReader = new FileReader(user);
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line = bufferedReader.readLine();
+                    while (line != null) {
+                        stringBuilder.append(line).append("\n");
+                        line = bufferedReader.readLine();
+                    }
+                    bufferedReader.close();
+                    System.out.println(stringBuilder);
+                    JSONObject userData = new JSONObject(stringBuilder.toString());
+
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                } catch (JSONException jsonException) {
+                    jsonException.printStackTrace();
+                }
+
+                String string = " ";
+                String usernameFileName = usernameInput.getText().toString() + ".json";
+                AssetManager am = SelectUserActivity.this.getAssets();
+                try {
+                    InputStream inputStream = getAssets().open(usernameFileName);
                     int size = inputStream.available();
                     byte[] buffer = new byte[size];
                     inputStream.read(buffer);
@@ -109,7 +176,7 @@ public class SelectUserActivity extends AppCompatActivity{
                 }
                 fileContent.setText(string);
             }
-        });*/
+        });
     }
     public void goToActivity(Class<?> cls){
         Intent intent = new Intent(getApplicationContext(), cls);

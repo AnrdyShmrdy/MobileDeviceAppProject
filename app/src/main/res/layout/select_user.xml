@@ -43,7 +43,7 @@
         android:layout_marginBottom="52dp"
         android:gravity="center"
         android:text="@string/select_user_activity_name"
-        app:layout_constraintBottom_toTopOf="@+id/userNameEditTxt"
+        app:layout_constraintBottom_toTopOf="@+id/usernameInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loadUserBtn" />
 
     <EditText
-        android:id="@+id/userNameEditTxt"
+        android:id="@+id/usernameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="449dp"
