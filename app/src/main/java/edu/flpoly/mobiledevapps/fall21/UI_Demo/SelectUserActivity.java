@@ -17,15 +17,15 @@ import com.amplifyframework.auth.cognito.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SelectPlanActivity extends AppCompatActivity{
-    Button menu_button_select_plan, selectPlan1Button, selectPlan2Button;
+public class SelectUserActivity extends AppCompatActivity{
+    Button menu_button_select_user, selectPlan1Button, selectPlan2Button;
     private TextView fileContent;
     PopupMenu popupMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.select_plan);
-        menu_button_select_plan = (Button) findViewById(R.id.menu_button_select_user);
+        setContentView(R.layout.select_user);
+        menu_button_select_user = (Button) findViewById(R.id.menu_button_select_user);
         selectPlan1Button = (Button) findViewById(R.id.selectPlan1Button);
         selectPlan2Button = (Button) findViewById(R.id.selectPlan2Button);
         fileContent = (TextView) findViewById(R.id.selectPlanOutput);
@@ -43,11 +43,11 @@ public class SelectPlanActivity extends AppCompatActivity{
 
 
         // Setting onClick behavior to the button
-        menu_button_select_plan.setOnClickListener(new View.OnClickListener() {
+        menu_button_select_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Initializing the popup menu and giving the reference as current context
-                popupMenu = new PopupMenu(SelectPlanActivity.this, menu_button_select_plan);
+                popupMenu = new PopupMenu(SelectUserActivity.this, menu_button_select_user);
 
                 // Inflating popup menu from popup_menu.xml file
                 popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());

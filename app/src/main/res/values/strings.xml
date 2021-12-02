@@ -3,6 +3,7 @@
     <string name="main_activity_name">Main</string>
     <string name="leaderboard_activity_name">Leaderboard</string>
     <string name="select_plan_activity_name">Select Plan</string>
+    <string name="select_user_activity_name">Select User</string>
     <string name="plan_1">Plan 1</string>
     <string name="plan_2">Plan 2</string>
     <string name="list_item_1">List Item 1</string>

@@ -13,6 +13,11 @@
         android:id="@+id/leaderboard_item"
         android:title="@string/leaderboard_activity_name" />
 
+    <item
+        android:id="@+id/select_user_item"
+        android:title="@string/select_user_activity_name" />
+
+
 </menu>
 <!--
 Above code was created with the help of this tutorial:

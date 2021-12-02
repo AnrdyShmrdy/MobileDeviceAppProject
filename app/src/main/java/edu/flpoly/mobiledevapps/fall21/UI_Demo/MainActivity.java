@@ -162,6 +162,11 @@ public class MainActivity extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(), "You clicked to go to the leaderboard screen", Toast.LENGTH_SHORT).show();
                 goToActivity(LeaderboardActivity.class);
             }
+        //if menuItem equals the fourth entry in the popupMenu (select user screen)
+        else if (menuItem.getTitle().equals("Select User") && !currentActivity.equals("SelectUserActivity")) {
+            Toast.makeText(getApplicationContext(), "You clicked to go to the select user screen", Toast.LENGTH_SHORT).show();
+            goToActivity(SelectUserActivity.class);
+        }
         //if menuItem is equal to the current activity:
         else {
                 // Toast message on menu item clicked
