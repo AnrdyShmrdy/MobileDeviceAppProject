@@ -98,12 +98,6 @@ public class SelectPlanActivity extends AppCompatActivity{
                 } catch (Exception exception) {
                     Log.e("MyAmplifyApp", "Upload failed", exception);
                 }
-                Amplify.Storage.uploadFile(
-                        "plan1.txt",
-                        plan1file,
-                        result -> Log.i("SelectPlanActivity", "Successfully uploaded: " + result.getKey()),
-                        storageFailure -> Log.e("SelectPlanActivity", "Upload failed", storageFailure)
-                );
             }
 
 
@@ -125,20 +119,6 @@ public class SelectPlanActivity extends AppCompatActivity{
                 }
                 fileContent.setText(string);
                 //upload plan2.txt to s3 bucket
-                File plan2file = new File(getApplicationContext().getFilesDir(), "plan2.txt");
-                try {
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(plan2file));
-                    writer.append("Example file contents");
-                    writer.close();
-                } catch (Exception exception) {
-                    Log.e("MyAmplifyApp", "Upload failed", exception);
-                }
-                Amplify.Storage.uploadFile(
-                        "plan2.txt",
-                        plan2file,
-                        result -> Log.i("SelectPlanActivity", "Successfully uploaded: " + result.getKey()),
-                        storageFailure -> Log.e("SelectPlanActivity", "Upload failed", storageFailure)
-                );
             }
         });
     }

@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.amazonaws.mobileconnectors.lambdainvoker.*;
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.regions.Regions;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import androidx.appcompat.app.AppCompatActivity;
@@ -56,6 +58,15 @@ public class MainActivity extends AppCompatActivity{
                 popupMenu.show();
             }
         });
+
+        File userFile = new File(getApplicationContext().getFilesDir(), "/user/*.json");
+        if(!userFile.exists()){
+            plan1Button.setText("Please select a plan on the plan select screen");
+        }
+        else{
+
+        }
+
         //setting onClick behavior for plan 1 button:
         plan1Button.setOnClickListener(new View.OnClickListener(){
             @Override
