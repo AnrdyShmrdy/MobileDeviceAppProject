@@ -22,7 +22,7 @@
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
-    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientRefreshTokenValidity": "30",
     "userpoolClientWriteAttributes": [
         "email"
     ],
@@ -50,12 +50,13 @@
     "usernameAttributes": [
         "phone_number"
     ],
-    "userPoolGroupList": [],
+    "userPoolGroupList": [
+        "mobileusers"
+    ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "dependsOn": [],
-    "thirdPartyAuth": false,
-    "userPoolGroups": false,
+    "userPoolGroups": true,
     "adminQueries": false,
     "triggers": "{}",
     "hostedUI": false,
@@ -64,5 +65,6 @@
     },
     "breakCircularDependency": true,
     "permissions": [],
-    "authProviders": []
+    "authProviders": [],
+    "thirdPartyAuth": false
 }
