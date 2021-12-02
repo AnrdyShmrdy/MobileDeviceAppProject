@@ -1,0 +1,28 @@
+{
+  "tasks": [{
+    "taskID": 1,
+    "taskName": "Squats",
+    "taskDesc": "Complete 60 squats"
+  },
+    {
+      "taskID": 2,
+      "taskName": "Pushups",
+      "taskDesc": "Complete 30 pushups"
+    },
+    {
+      "taskID": 3,
+      "taskName": "Pullups",
+      "taskDesc": "Complete 15 pullups"
+    },
+    {
+      "taskID": 4,
+      "taskName": "Dips",
+      "taskDesc": "Complete 20 dips"
+    },
+    {
+      "taskID": 5,
+      "taskName": "Rows",
+      "taskDesc": "Complete 30 rows"
+    }
+  ]
+}

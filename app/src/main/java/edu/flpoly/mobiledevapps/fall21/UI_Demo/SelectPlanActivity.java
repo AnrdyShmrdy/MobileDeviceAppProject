@@ -73,13 +73,13 @@ public class SelectPlanActivity extends AppCompatActivity{
             }
         });
         //setting onClick behavior for plan 1 button:
-        selectPlan1Button.setOnClickListener(new View.OnClickListener(){
+        /*selectPlan1Button.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view){
+           public void onClick(View view){
                 String string = " ";
                 AssetManager am = SelectPlanActivity.this.getAssets();
                 try {
-                    InputStream inputStream = getAssets().open("plan1.txt");
+                    InputStream inputStream = getAssets().open("plan1.json");
                     int size = inputStream.available();
                     byte[] buffer = new byte[size];
                     inputStream.read(buffer);
@@ -89,8 +89,8 @@ public class SelectPlanActivity extends AppCompatActivity{
                 }
                 fileContent.setText(string);
 
-                //uploads plan1.txt to Amazon
-                File plan1file = new File(getApplicationContext().getFilesDir(), "plan1.txt");
+                //uploads plan1.json to Amazon
+                File plan1file = new File(getApplicationContext().getFilesDir(), "plan1.json");
                 try {
                     BufferedWriter writer = new BufferedWriter(new FileWriter(plan1file));
                     writer.append("Example file contents");
@@ -98,24 +98,18 @@ public class SelectPlanActivity extends AppCompatActivity{
                 } catch (Exception exception) {
                     Log.e("MyAmplifyApp", "Upload failed", exception);
                 }
-                Amplify.Storage.uploadFile(
-                        "plan1.txt",
-                        plan1file,
-                        result -> Log.i("SelectPlanActivity", "Successfully uploaded: " + result.getKey()),
-                        storageFailure -> Log.e("SelectPlanActivity", "Upload failed", storageFailure)
-                );
             }
 
 
-        });
+        });*/
         //setting onClick behavior for plan 2 button:
-        selectPlan2Button.setOnClickListener(new View.OnClickListener(){
+        /*selectPlan2Button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                String string = " ";
+                /*String string = " ";
                 AssetManager am = SelectPlanActivity.this.getAssets();
                 try {
-                    InputStream inputStream = getAssets().open("plan2.txt");
+                    InputStream inputStream = getAssets().open("plan2.json");
                     int size = inputStream.available();
                     byte[] buffer = new byte[size];
                     inputStream.read(buffer);
@@ -124,23 +118,8 @@ public class SelectPlanActivity extends AppCompatActivity{
                     e.printStackTrace();
                 }
                 fileContent.setText(string);
-                //upload plan2.txt to s3 bucket
-                File plan2file = new File(getApplicationContext().getFilesDir(), "plan2.txt");
-                try {
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(plan2file));
-                    writer.append("Example file contents");
-                    writer.close();
-                } catch (Exception exception) {
-                    Log.e("MyAmplifyApp", "Upload failed", exception);
-                }
-                Amplify.Storage.uploadFile(
-                        "plan2.txt",
-                        plan2file,
-                        result -> Log.i("SelectPlanActivity", "Successfully uploaded: " + result.getKey()),
-                        storageFailure -> Log.e("SelectPlanActivity", "Upload failed", storageFailure)
-                );
             }
-        });
+        });*/
     }
     public void goToActivity(Class<?> cls){
         Intent intent = new Intent(getApplicationContext(), cls);

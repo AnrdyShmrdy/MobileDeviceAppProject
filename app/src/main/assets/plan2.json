@@ -1,0 +1,28 @@
+{
+  "tasks": [{
+    "taskID": 1,
+    "taskName": "Flat Bench",
+    "taskDesc": "Perform 3x12 reps"
+  },
+    {
+      "taskID": 2,
+      "taskName": "Squat",
+      "taskDesc": "Perform 3x12 reps"
+    },
+    {
+      "taskID": 3,
+      "taskName": "Deadlift",
+      "taskDesc": "Perform 3x12 reps"
+    },
+    {
+      "taskID": 4,
+      "taskName": "Incline Bench",
+      "taskDesc": "Perform 3x12 reps"
+    },
+    {
+      "taskID": 5,
+      "taskName": "Weighted Rows",
+      "taskDesc": "Perform 3x12 reps"
+    }
+  ]
+}

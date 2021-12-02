@@ -2,7 +2,6 @@ package edu.flpoly.mobiledevapps.fall21.UI_Demo;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,30 +9,47 @@ import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.amazonaws.mobileconnectors.lambdainvoker.*;
-import com.amazonaws.auth.CognitoCachingCredentialsProvider;
-import com.amazonaws.regions.Regions;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class MainActivity extends AppCompatActivity{
-    private Button menu_button_main, plan1Button, plan2Button;
+    public String loadJSONFromAsset(String filename) {
+        String json = null;
+        try {
+            InputStream is = getApplicationContext().getAssets().open(filename);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+    private Button menu_button_main, planButton;
     private PopupMenu popupMenu;
-    private String plan1FileName = "plan1.txt";
-    private String plan2FileName = "plan2.txt";
     private TextView fileContent;
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         menu_button_main = (Button) findViewById(R.id.menu_button_main);
-        plan1Button = (Button) findViewById(R.id.mainPlan1Button);
-        plan2Button = (Button) findViewById(R.id.mainPlan2Button);
+        planButton = (Button) findViewById(R.id.planButton);
         fileContent = (TextView) findViewById(R.id.planOutput);
         // Setting onClick behavior for the menu button
         menu_button_main.setOnClickListener(new View.OnClickListener() {
@@ -56,14 +72,43 @@ public class MainActivity extends AppCompatActivity{
                 popupMenu.show();
             }
         });
+
+
+        File userFile = new File(getApplicationContext().getFilesDir(), "/user/*.json");
+        if(userFile.exists()){
+            planButton.setText("Please select a plan on the plan select screen");
+        }
+        else{
+            //open plan file and generate plan
+            int randomNum = ThreadLocalRandom.current().nextInt(1, 5 + 1);
+            //if(user plan = plan1){
+                try {
+                    JSONObject plan = new JSONObject(loadJSONFromAsset("plan1.json"));
+                    JSONObject task = plan.getJSONArray("tasks").getJSONObject(randomNum);
+                    planButton.setText(task.getString("taskName") + "\n" + task.getString("taskDesc"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            //}
+            //else{
+                try {
+                    JSONObject plan = new JSONObject(loadJSONFromAsset("plan2.json"));
+                    JSONObject task = plan.getJSONArray("tasks").getJSONObject(randomNum);
+                    planButton.setText(task.getString("taskName") + "\n" + task.getString("taskDesc"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            //}
+        }
+
         //setting onClick behavior for plan 1 button:
-        plan1Button.setOnClickListener(new View.OnClickListener(){
+       /* plan1Button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 String string = " ";
                 AssetManager am = MainActivity.this.getAssets();
                 try {
-                    InputStream inputStream = getAssets().open("plan1.txt");
+                    InputStream inputStream = getAssets().open("plan1.json");
                     int size = inputStream.available();
                     byte[] buffer = new byte[size];
                     inputStream.read(buffer);
@@ -73,15 +118,15 @@ public class MainActivity extends AppCompatActivity{
                 }
                 fileContent.setText(string);
             }
-        });
+        });*/
         //setting onClick behavior for plan 2 button:
-        plan2Button.setOnClickListener(new View.OnClickListener(){
+        /*plan2Button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 String string = " ";
                 AssetManager am = MainActivity.this.getAssets();
                 try {
-                    InputStream inputStream = getAssets().open("plan2.txt");
+                    InputStream inputStream = getAssets().open("plan2.json");
                     int size = inputStream.available();
                     byte[] buffer = new byte[size];
                     inputStream.read(buffer);
@@ -91,7 +136,7 @@ public class MainActivity extends AppCompatActivity{
                 }
                 fileContent.setText(string);
             }
-        });
+        });*/
     }
     public void goToActivity(Class<?> cls){
         Intent intent = new Intent(getApplicationContext(), cls);
