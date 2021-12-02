@@ -87,7 +87,7 @@ public class LeaderboardActivity extends AppCompatActivity{
             Log.e("MyAmplifyApp", "Upload failed", exception);
         }
         //Checks is leaderboard exists, if it does, deletes to update
-        File leaderboard = new File(getApplicationContext().getFilesDir(), "leaderboard.json");
+        File leaderboard = new File(getApplicationContext().getFilesDir(), "/leaderboard/leaderboard.json");
         if(leaderboard.exists()){
             if (leaderboard.delete()) {
                 System.out.println("Deleted the file: leaderboard.json");
@@ -96,11 +96,9 @@ public class LeaderboardActivity extends AppCompatActivity{
             }
         }
         //Downloads leaderboard
-
-        boolean isDownloaded = false;
         Amplify.Storage.downloadFile(
                 "leaderboard.json",
-                new File(getApplicationContext().getFilesDir() + "/leaderboard.json"),
+                new File(getApplicationContext().getFilesDir() + "/leaderboard/leaderboard.json"),
                 result -> Log.i("MyAmplifyApp", "Successfully downloaded: " + result.getFile().getName()),
                 error -> Log.e("MyAmplifyApp",  "Download Failure", error)
         );
